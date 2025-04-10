@@ -103,31 +103,48 @@ public class Exercises {
 
         if you're familiar with lists and arraylists, you can also edit method's body to use them instead of array
     */
-    public ArrayList<Integer> intPartitions(int n) {
+    public ArrayList<ArrayList<Integer>> intPartitions(int n) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            result.add(new ArrayList<>());
-        }
 
         int count = 0;
         int i = 0;
         int j = 0;
         int k = 0;
-        int sum = 0;
+        int t = 0;
         for (; k < n; k++){
-            if (count == n){
-                for (i = 0; i < n; i++) {
-                    result.add(new ArrayList<>());
-                }
-            }
+            t = 0;
+            result.add(new ArrayList<>());
             for (i = 0; i < n / (n - k); i++){
                 result.get(count).add(n - k);
-                count++;
+                t++;
             }
-            if (k != 0) {
+            if (k != 0 && n%(n - k) != 0) {
                 result.get(count).add(k);
+                t++;
             }
-            System.out.println(result.get(count));
+            for(j = t; result.get(count).get(1) != 1; j--){
+                result.add(new ArrayList<>());
+                result.get(count + 1).addAll(result.get(count));
+                count++;
+                if (result.get(count).get(j) != 1 ){
+                    for (; result.get(count).get(j) != 1 && result.get(k).get(j) > result.get(k).get(j + 1); j++){
+
+                        int temp =result.get(count + 1).get(result.get(count + 1).size() - 1);
+                        result.get(count + 1).set(result.get(count + 1).size() - 1,  temp - 1);
+
+
+
+                    }
+                    result.get(count).add(1);
+                }
+
+
+
+            }
+            count++;
+            if (count == n){
+                return result;
+            }
         }
         return null;
     }
