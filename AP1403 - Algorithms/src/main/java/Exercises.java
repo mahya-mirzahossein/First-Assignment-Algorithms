@@ -9,7 +9,21 @@ public class Exercises {
         note: you should return the indices in ascending order and every array's solution is unique
     */
     public int[] productIndices(int[] values, int target) {
-        // todo
+        int size = values.length;
+        int[] result = new int[2];
+        for (int i = 0; i < size; i++){
+            if (target % values[i] == 0){
+                for (int j = i + 1; j < size; j++){
+                    if (target == (values[i] * values[j])){
+                        result[0] = i;
+                        result[1] = j;
+                        System.out.println(i + " " + j);
+                        return result;
+
+                    }
+                }
+            }
+        }
         return null;
     }
 
@@ -59,6 +73,9 @@ public class Exercises {
     }
 
     public static void main(String[] args) {
-        // you can test your code here
+        System.out.println("Hello World");
+        //Exercises ex = new Exercises();
+        //int[] array = {5, 10, 2, 20};
+        //System.out.println(ex.productIndices(array, 20));
     }
 }
