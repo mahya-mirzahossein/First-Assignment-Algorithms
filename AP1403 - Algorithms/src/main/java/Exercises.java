@@ -113,53 +113,56 @@ public class Exercises {
         int t = 0;
         for (; k < n; k++) {
             t = 0;
-            result.add(new ArrayList<>());
+
+            // اگر لیست به اندازه کافی بزرگ نیست، آن را گسترش دهیم
+            while (result.size() <= count) {
+                result.add(new ArrayList<>());
+            }
+
             count++;
+
             for (i = 0; i < n / (n - k); i++) {
                 result.get(count).add(n - k);
                 t++;
             }
+
             if (k != 0 && n % (n - k) != 0) {
                 result.get(count).add(k);
                 t++;
             }
+
+            if (result.get(count).size() == 1) {
+                continue;
+            }
+
             result.add(new ArrayList<>());
             result.get(count + 1).addAll(result.get(count));
             count++;
             System.out.println("*****" + count + "  " + result.size());
-        }/*
-            for(j = result.get(count).size() - 1; result.get(count).get(1) != 1; j--){
 
-                if (result.get(count).get(j) != 1 ){
-                    for (i = j + 1; result.get(count).get(j) != 1 && result.get(k).get(j) > result.get(k).get(i); i++){
-                        if (i < result.get(count).size()){
-                            int temp =result.get(count).get(result.get(count).size() - 1);
-                            result.get(count).set(result.get(count).size() - 1,  temp - 1);
+            for (j = result.get(count).size() - 1; result.get(count).get(1) != 1; j--) {
+                if (result.get(count).get(j) != 1) {
+                    for (i = j + 1; result.get(count).get(j) != 1 && result.get(k).get(j) > result.get(k).get(i); i++) {
+                        if (i < result.get(count).size()) {
+                            int temp = result.get(count).get(result.get(count).size() - 1);
+                            result.get(count).set(result.get(count).size() - 1, temp - 1);
                             temp = result.get(count).get(result.get(count).get(i));
                             result.get(count).set(result.get(count).get(i), temp + 1);
                             count++;
-
                         }
                     }
                     result.get(count).add(1);
                 }
                 result.add(new ArrayList<>());
                 result.get(count + 1).addAll(result.get(count));
-
-
-
             }
             count++;
-            if (count == n){
+            if (count == n) {
                 return result;
             }
         }
 
-        */
         return result;
-        //return null;
-
-
     }
 
     public static void main(String[] args) {
