@@ -122,47 +122,50 @@ public class Exercises {
             if (result.get(count).size() == 1 || result.get(count).get(0) == n - 1) {
                 continue;
             }
-
+            if(result.get(count).size() == n){
+                return result;
+            }
 
 
             for (j = result.get(count).size() - 1; j > 0 && result.get(count).size() > 1 && result.get(count).get(1) != 1; j--) {
-                result.add(new ArrayList<>());
-                result.get(count + 1).addAll(result.get(count));
-                count++;
                 int temp = result.get(count).get(j);
                 if (result.get(count).get(j) != 1) {
+                    result.add(new ArrayList<>());
+                    result.get(count + 1).addAll(result.get(count));
+                    count++;
                     result.get(count).set(j, temp - 1);
                     result.get(count).add(1);
+                    result.add(new ArrayList<>());
+                    result.get(count + 1).addAll(result.get(count));
+                    count++;
                     System.out.println(result.get(count));
 
                 }
-                for(i = j + 1;result.get(count).get(j) != 1 && i < result.get(count).size(); i++){
-                    if(result.get(count).get(j) > result.get(count).get(i) + 1) {
+
+                for (i = j + 1; result.get(count).get(j) != 1 && i < result.get(count).size(); i++) {
+                    if (result.get(count).get(j) > result.get(count).get(i) + 1) {
                         temp = result.get(count).get(j);
                         result.get(count).set(j, temp - 1);
                         temp = result.get(count).get(i);
                         result.get(count).set(i, temp + 1);
-                        System.out.println(result.get(count));
+                        count++;
 
-                    }
-                    else if (result.get(count).get(j) == 2 && result.get(count).get(j + 1) == 1) {
+                    } else if (result.get(count).get(j) == 2 && result.get(count).get(j + 1) == 1) {
                         temp = result.get(count).get(j);
                         result.get(count).set(j, temp - 1);
                         result.get(count).add(1);
-                        System.out.println("1" + result.get(count));
                     }
 
                 }
             }
 
-            if (count == n) {
-                System.out.println("--------");
-                return result;
-            }
+
         }
 
         return result;
     }
+
+
 
 
     public static void main(String[] args) {
