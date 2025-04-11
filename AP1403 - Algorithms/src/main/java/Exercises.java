@@ -118,32 +118,39 @@ public class Exercises {
                 t++;
             }
             if (k != 0 && n % (n - k) != 0) {
-                result.get(count).add(k);
+                result.get(count).add(n % (n - k));
                 t++;
             }
             if (result.get(count).size() == 1 || result.get(count).get(0) == n - 1) {
                 continue;
             }
 
+
+
             for (j = result.get(count).size() - 1; j > 0 && result.get(count).size() > 1 && result.get(count).get(1) != 1; j--) {
                 result.add(new ArrayList<>());
                 result.get(count + 1).addAll(result.get(count));
                 count++;
-
-                if (j < result.get(count).size() && result.get(count).get(j) != 1) {
-                    for (i = j + 1; i < result.get(count).size() && result.get(count).get(j) > result.get(count).get(i); i++) {
-                        System.out.println("1111111");
-                        int temp = result.get(count).get(result.get(count).size() - 1);
-                        result.get(count).set(result.get(count).size() - 1, temp - 1);
-                        System.out.println("++++++");
-                        int index = result.get(count).get(i);
-                        if (index >= 0 && index < result.get(count).size()) {
-                            temp = result.get(count).get(index);
-                            result.get(count).set(index, temp + 1);
-                            count++;
-                        }
-                    }
+                int temp = result.get(count).get(j);
+                if (result.get(count).get(j) != 1) {
+                    result.get(count).set(j, temp - 1);
                     result.get(count).add(1);
+                }
+                for(i = j + 1;result.get(count).get(j) != 1 && i < result.get(count).size(); i++){
+                    if(result.get(count).get(j) > result.get(count).get(i) + 1) {
+                        temp = result.get(count).get(j);
+                        result.get(count).set(j, temp - 1);
+                        temp = result.get(count).get(i);
+                        result.get(count).set(i, temp + 1);
+
+                    }
+                    else if (result.get(count).get(j) == 2){
+                        temp = result.get(count).get(j);
+                        result.get(count).set(j, temp - 1);
+                        result.get(count).add(1);
+                    }
+                    result.get(count).remove(result.get(count).size() - 1);
+
                 }
             }
 
