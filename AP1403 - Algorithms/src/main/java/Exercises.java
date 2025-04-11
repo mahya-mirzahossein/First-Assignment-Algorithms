@@ -142,28 +142,24 @@ public class Exercises {
                         result.get(count).set(j, temp - 1);
                         temp = result.get(count).get(i);
                         result.get(count).set(i, temp + 1);
+                        if(result.get(count).equals(result.get(count - 1))){
+                            result.remove(count);
+                            count--;
+                        }
 
                     }
-                    else if (result.get(count).get(j) == 2){
+                    else if (result.get(count).get(j) == 2 && result.get(count).get(j + 1) == 1) {
                         temp = result.get(count).get(j);
                         result.get(count).set(j, temp - 1);
                         result.get(count).add(1);
+                        if(result.get(count).equals(result.get(count - 1))){
+                            result.remove(count);
+                            count--;
+                        }
                     }
-                    result.get(count).remove(result.get(count).size() - 1);
 
                 }
             }
-
-            if (count == n) {
-                return result;
-            }
-        }
-
-        return result;
-    }
-
-
-
     public static void main(String[] args) {
         Exercises ex = new Exercises();
         /*
