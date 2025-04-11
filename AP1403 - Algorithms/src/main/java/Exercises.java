@@ -135,6 +135,11 @@ public class Exercises {
                 if (result.get(count).get(j) != 1) {
                     result.get(count).set(j, temp - 1);
                     result.get(count).add(1);
+                    System.out.println("*" + result.get(count));
+                    if(result.get(count).equals(result.get(count-1))){
+                        result.remove(count);
+                        count--;
+                    }
                 }
                 for(i = j + 1;result.get(count).get(j) != 1 && i < result.get(count).size(); i++){
                     if(result.get(count).get(j) > result.get(count).get(i) + 1) {
@@ -142,7 +147,7 @@ public class Exercises {
                         result.get(count).set(j, temp - 1);
                         temp = result.get(count).get(i);
                         result.get(count).set(i, temp + 1);
-                        if(result.get(count).equals(result.get(count - 1))){
+                        if(result.get(count).equals(result.get(count-1))){
                             result.remove(count);
                             count--;
                         }
@@ -152,7 +157,7 @@ public class Exercises {
                         temp = result.get(count).get(j);
                         result.get(count).set(j, temp - 1);
                         result.get(count).add(1);
-                        if(result.get(count).equals(result.get(count - 1))){
+                        if(result.get(count).equals(result.get(count-1))){
                             result.remove(count);
                             count--;
                         }
@@ -160,6 +165,15 @@ public class Exercises {
 
                 }
             }
+
+            if (count == n) {
+                return result;
+            }
+        }
+
+        return result;
+    }
+
     public static void main(String[] args) {
         Exercises ex = new Exercises();
         /*
