@@ -115,11 +115,9 @@ public class Exercises {
 
             for (i = 0; i < n / (n - k); i++) {
                 result.get(count).add(n - k);
-                t++;
             }
             if (k != 0 && n % (n - k) != 0) {
                 result.get(count).add(n % (n - k));
-                t++;
             }
             if (result.get(count).size() == 1 || result.get(count).get(0) == n - 1) {
                 continue;
@@ -135,11 +133,8 @@ public class Exercises {
                 if (result.get(count).get(j) != 1) {
                     result.get(count).set(j, temp - 1);
                     result.get(count).add(1);
-                    System.out.println("*" + result.get(count));
-                    if(result.get(count).equals(result.get(count-1))){
-                        result.remove(count);
-                        count--;
-                    }
+                    System.out.println(result.get(count));
+
                 }
                 for(i = j + 1;result.get(count).get(j) != 1 && i < result.get(count).size(); i++){
                     if(result.get(count).get(j) > result.get(count).get(i) + 1) {
@@ -147,32 +142,28 @@ public class Exercises {
                         result.get(count).set(j, temp - 1);
                         temp = result.get(count).get(i);
                         result.get(count).set(i, temp + 1);
-                        if(result.get(count).equals(result.get(count-1))){
-                            result.remove(count);
-                            count--;
-                        }
+                        System.out.println(result.get(count));
 
                     }
                     else if (result.get(count).get(j) == 2 && result.get(count).get(j + 1) == 1) {
                         temp = result.get(count).get(j);
                         result.get(count).set(j, temp - 1);
                         result.get(count).add(1);
-                        if(result.get(count).equals(result.get(count-1))){
-                            result.remove(count);
-                            count--;
-                        }
+                        System.out.println("1" + result.get(count));
                     }
 
                 }
             }
 
             if (count == n) {
+                System.out.println("--------");
                 return result;
             }
         }
 
         return result;
     }
+
 
     public static void main(String[] args) {
         Exercises ex = new Exercises();
