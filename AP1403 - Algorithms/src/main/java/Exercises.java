@@ -105,12 +105,9 @@ public class Exercises {
     */
     public ArrayList<ArrayList<Integer>> intPartitions(int n) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
-
         int count = -1;
-        int i = 0;
-        int j = 0;
-        int k = 0;
-        int t = 0;
+        int i = 0, j = 0, k = 0, t = 0;
+
         for (; k < n; k++) {
             t = 0;
             result.add(new ArrayList<>());
@@ -124,54 +121,40 @@ public class Exercises {
                 result.get(count).add(k);
                 t++;
             }
-
             if (result.get(count).size() == 1 || result.get(count).get(0) == n - 1) {
                 continue;
             }
 
-            result.add(new ArrayList<>());
-            result.get(count + 1).addAll(result.get(count));
-            count++;
-            System.out.println("aaaaaaaa");
+            for (j = result.get(count).size() - 1; j > 0 && result.get(count).size() > 1 && result.get(count).get(1) != 1; j--) {
+                result.add(new ArrayList<>());
+                result.get(count + 1).addAll(result.get(count));
+                count++;
 
-            System.out.println("*****" + count + "  " + result.size());
-            System.out.println("-----" + result);
-
-            for(j = result.get(count).size() - 1; result.get(count).get(1) != 1; j--){
-
-                if (result.get(count).get(j) != 1 ){
-                    for (i = j + 1; result.get(count).get(j) != 1 && result.get(k).get(j) > result.get(k).get(i); i++){
-                        if (i < result.get(count).size()){
-                            int temp =result.get(count).get(result.get(count).size() - 1);
-                            result.get(count).set(result.get(count).size() - 1,  temp - 1);
-                            int index = result.get(count).get(i);
-                            if (index >= 0 && index < result.get(count).size()) {
-                                temp = result.get(count).get(index);
-                                result.get(count).set(index, temp + 1);
-                                count++;
-                            }
-
+                if (j < result.get(count).size() && result.get(count).get(j) != 1) {
+                    for (i = j + 1; i < result.get(count).size() && result.get(count).get(j) > result.get(count).get(i); i++) {
+                        System.out.println("1111111");
+                        int temp = result.get(count).get(result.get(count).size() - 1);
+                        result.get(count).set(result.get(count).size() - 1, temp - 1);
+                        System.out.println("++++++");
+                        int index = result.get(count).get(i);
+                        if (index >= 0 && index < result.get(count).size()) {
+                            temp = result.get(count).get(index);
+                            result.get(count).set(index, temp + 1);
+                            count++;
                         }
                     }
                     result.get(count).add(1);
                 }
-                result.add(new ArrayList<>());
-                result.get(count + 1).addAll(result.get(count));
-
-
-
             }
-            count++;
-            if (count == n){
+
+            if (count == n) {
                 return result;
             }
         }
 
         return result;
-        //return null;
-
-
     }
+
 
 
     public static void main(String[] args) {
