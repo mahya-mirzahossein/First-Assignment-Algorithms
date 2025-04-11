@@ -111,32 +111,42 @@ public class Exercises {
         int j = 0;
         int k = 0;
         int t = 0;
-        for (; k < n; k++){
+        for (; k < n; k++) {
             t = 0;
             result.add(new ArrayList<>());
-            for (i = 0; i < n / (n - k); i++){
+            for (i = 0; i < n / (n - k); i++) {
                 result.get(count).add(n - k);
                 t++;
             }
-            if (k != 0 && n%(n - k) != 0) {
+            if (k != 0 && n % (n - k) != 0) {
                 result.get(count).add(k);
                 t++;
             }
-            for(j = t; result.get(count).get(1) != 1; j--){
-                result.add(new ArrayList<>());
-                result.get(count + 1).addAll(result.get(count));
-                count++;
+            result.add(new ArrayList<>());
+            System.out.println(count + " " + result.size());
+        }
+            /*
+
+            /*
+            result.get(count + 1).addAll(result.get(count));
+            count++;
+            for(j = result.get(count).size() - 1; result.get(count).get(1) != 1; j--){
+
                 if (result.get(count).get(j) != 1 ){
-                    for (; result.get(count).get(j) != 1 && result.get(k).get(j) > result.get(k).get(j + 1); j++){
+                    for (i = j + 1; result.get(count).get(j) != 1 && result.get(k).get(j) > result.get(k).get(i); i++){
+                        if (i < result.get(count).size()){
+                            int temp =result.get(count).get(result.get(count).size() - 1);
+                            result.get(count).set(result.get(count).size() - 1,  temp - 1);
+                            temp = result.get(count).get(result.get(count).get(i));
+                            result.get(count).set(result.get(count).get(i), temp + 1);
+                            count++;
 
-                        int temp =result.get(count + 1).get(result.get(count + 1).size() - 1);
-                        result.get(count + 1).set(result.get(count + 1).size() - 1,  temp - 1);
-
-
-
+                        }
                     }
                     result.get(count).add(1);
                 }
+                result.add(new ArrayList<>());
+                result.get(count + 1).addAll(result.get(count));
 
 
 
@@ -146,7 +156,11 @@ public class Exercises {
                 return result;
             }
         }
+
+             */
         return null;
+
+
     }
 
     public static void main(String[] args) {
