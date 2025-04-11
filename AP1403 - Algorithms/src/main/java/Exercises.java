@@ -124,13 +124,18 @@ public class Exercises {
                 result.get(count).add(k);
                 t++;
             }
-            if (result.get(count).size() == 1){
+
+            if (result.get(count).size() == 1 || result.get(count).get(0) == n - 1) {
                 continue;
             }
+
             result.add(new ArrayList<>());
             result.get(count + 1).addAll(result.get(count));
             count++;
+            System.out.println("aaaaaaaa");
+
             System.out.println("*****" + count + "  " + result.size());
+            System.out.println("-----" + result);
 
             for(j = result.get(count).size() - 1; result.get(count).get(1) != 1; j--){
 
@@ -167,6 +172,7 @@ public class Exercises {
 
 
     }
+
 
     public static void main(String[] args) {
         Exercises ex = new Exercises();
