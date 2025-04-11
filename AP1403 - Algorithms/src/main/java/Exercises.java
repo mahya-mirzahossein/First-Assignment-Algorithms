@@ -103,6 +103,7 @@ public class Exercises {
 
         if you're familiar with lists and arraylists, you can also edit method's body to use them instead of array
     */
+
     public ArrayList<ArrayList<Integer>> intPartitions(int n) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
         int count = -1;
@@ -138,7 +139,6 @@ public class Exercises {
                     result.add(new ArrayList<>());
                     result.get(count + 1).addAll(result.get(count));
                     count++;
-                    System.out.println(result.get(count));
 
                 }
 
@@ -157,6 +157,10 @@ public class Exercises {
                     }
 
                 }
+                if(result.get(count).equals(result.get(count-1))){
+                    result.remove(count);
+                    count--;
+                }
             }
 
 
@@ -164,8 +168,6 @@ public class Exercises {
 
         return result;
     }
-
-
 
 
     public static void main(String[] args) {
@@ -210,7 +212,11 @@ public class Exercises {
         int rows4 = 5;
         int cols4 = 6;
         System.out.print(ex.spiralTraversal(nums4, rows4, cols4));
-         */
+
+        System.out.println(ex.intPartitions(1));
+        System.out.println(ex.intPartitions(4));
+        System.out.println(ex.intPartitions(5));
         System.out.println(ex.intPartitions(6));
+         */
     }
 }
