@@ -219,4 +219,5 @@ public class Exercises {
         System.out.println(ex.intPartitions(6));
          */
     }
+    
 }
