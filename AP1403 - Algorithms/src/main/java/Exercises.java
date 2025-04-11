@@ -106,7 +106,7 @@ public class Exercises {
     public ArrayList<ArrayList<Integer>> intPartitions(int n) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
 
-        int count = 0;
+        int count = -1;
         int i = 0;
         int j = 0;
         int k = 0;
@@ -114,6 +114,7 @@ public class Exercises {
         for (; k < n; k++) {
             t = 0;
             result.add(new ArrayList<>());
+            count++;
             for (i = 0; i < n / (n - k); i++) {
                 result.get(count).add(n - k);
                 t++;
@@ -123,13 +124,10 @@ public class Exercises {
                 t++;
             }
             result.add(new ArrayList<>());
-            System.out.println(count + " " + result.size());
-        }
-            /*
-
-            /*
             result.get(count + 1).addAll(result.get(count));
             count++;
+            System.out.println("*****" + count + "  " + result.size());
+        }/*
             for(j = result.get(count).size() - 1; result.get(count).get(1) != 1; j--){
 
                 if (result.get(count).get(j) != 1 ){
@@ -157,8 +155,9 @@ public class Exercises {
             }
         }
 
-             */
-        return null;
+        */
+        return result;
+        //return null;
 
 
     }
