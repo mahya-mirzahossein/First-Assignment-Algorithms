@@ -104,7 +104,7 @@ public class Exercises {
         if you're familiar with lists and arraylists, you can also edit method's body to use them instead of array
     */
 
-    public ArrayList<ArrayList<Integer>> intPartitions(int n) {
+    public int[][] intPartitions(int n) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
         int count = -1;
         int i = 0, j = 0, k = 0, t = 0;
@@ -123,12 +123,10 @@ public class Exercises {
             if (result.get(count).size() == 1 || result.get(count).get(0) == n - 1) {
                 continue;
             }
-            if(result.get(count).size() == n){
-                return result;
-            }
 
 
-            for (j = result.get(count).size() - 1; j > 0 && result.get(count).size() > 1 && result.get(count).get(1) != 1; j--) {
+
+            for (j = result.get(count).size() - 1; result.get(count).size() != n && j > 0 && result.get(count).size() > 1 && result.get(count).get(1) != 1; j--) {
                 int temp = result.get(count).get(j);
                 if (result.get(count).get(j) != 1) {
                     result.add(new ArrayList<>());
@@ -157,7 +155,7 @@ public class Exercises {
                     }
 
                 }
-                if(result.get(count).equals(result.get(count-1))){
+                if (result.get(count).equals(result.get(count - 1))) {
                     result.remove(count);
                     count--;
                 }
@@ -166,7 +164,17 @@ public class Exercises {
 
         }
 
-        return result;
+        int[][] result2 = new int[count + 1][];
+        for(i = 0; i <= count; i++){
+            result2[i] = new int[result.get(i).size()];
+            for(j = 0; j < result.get(i).size(); j++){
+                result2[i][j] = result.get(i).get(j);
+                //System.out.print(" " +result2[i][j]);
+            }
+            //System.out.println();
+        }
+
+        return result2;
     }
 
 
@@ -217,7 +225,7 @@ public class Exercises {
         System.out.println(ex.intPartitions(4));
         System.out.println(ex.intPartitions(5));
         System.out.println(ex.intPartitions(6));
-         */
+        */
     }
-    
+
 }
